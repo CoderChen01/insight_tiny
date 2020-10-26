@@ -1,0 +1,92 @@
+import Vue from 'vue'
+
+import {
+  Button,
+  Input,
+  Link,
+  Icon,
+  Form,
+  FormItem,
+  Message,
+  Menu,
+  MenuItem,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  Container,
+  Header,
+  Main,
+  Footer,
+  Dialog,
+  MessageBox,
+  Table,
+  TableColumn,
+  PageHeader,
+  Loading,
+  Upload,
+  Image,
+  Scrollbar,
+  Radio,
+  RadioGroup,
+  TimePicker,
+  Collapse,
+  CollapseItem,
+  Checkbox,
+  Switch,
+  Option,
+  Select,
+  Slider,
+  DatePicker,
+  OptionGroup,
+  Card,
+  InfiniteScroll,
+  Tooltip
+} from 'element-ui'
+
+const imports = [
+  Button,
+  Input,
+  Link,
+  Icon,
+  Form,
+  FormItem,
+  Menu,
+  MenuItem,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  Container,
+  Header,
+  Main,
+  Footer,
+  Dialog,
+  Table,
+  TableColumn,
+  PageHeader,
+  Upload,
+  Image,
+  Scrollbar,
+  Radio,
+  RadioGroup,
+  TimePicker,
+  Collapse,
+  CollapseItem,
+  Checkbox,
+  Switch,
+  Option,
+  Select,
+  Slider,
+  OptionGroup,
+  Card,
+  DatePicker,
+  InfiniteScroll,
+  Tooltip
+]
+
+for(let component of imports) {
+  Vue.use(component)
+}
+
+Vue.prototype.$message = Message
+Vue.prototype.$confirm = MessageBox.confirm
+Vue.prototype.$loading = Loading.service

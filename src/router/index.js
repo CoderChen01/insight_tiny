@@ -1,28 +1,52 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+
 
 Vue.use(VueRouter)
 
-  const routes = [
+const page404 = () => import('components/common/page404')
+const main = () => import('views/main/insightMain')
+const incidentMangement = () => import('views/incidentManagement/incidentManagementMain')
+
+
+const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'index',
+    component: main,
+    children: [
+      {
+        path: 'incident-management',
+        name: 'incidentManagement',
+        components: {
+          'incidents': incidentMangement
+        },
+        meta: {
+          requireAuth: true,
+          title: 'insight-事件总览'
+        }
+      }
+    ],
+    meta: {
+      requireAuth: true,
+      title: 'insight-让我来管理您的智能监控'
+    }
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '*',
+    name: 'page404',
+    components: {
+      'page404': page404
+    },
+    meta: {
+      requireAuth: false,
+      title: '您来到了一片未知区域...'
+    }
   }
 ]
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
   routes
 })
 
